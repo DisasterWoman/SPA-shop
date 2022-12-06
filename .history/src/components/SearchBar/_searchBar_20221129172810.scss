@@ -1,0 +1,20 @@
+.search-bar{
+  margin: 30px;
+  border: 1px solid #CA9B55;
+  border-radius: 10px;
+  padding: 0 10px;
+  position: relative;
+  input{
+    font-size: 18px;
+    outline-offset: 0;
+    outline: none;
+    border: none;
+    background-color: #1C0A00;
+    color: #F5D8AD;
+  }
+     ::placeholder {
+      color: #CA9B55;
+      opacity: 1;
+    }
+
+}

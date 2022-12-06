@@ -1,0 +1,28 @@
+@import '../../../src/scss/variables';
+
+.search-bar{
+  width: 350px;
+  margin-top: 25px;
+  border: 1px solid #50220f;
+  border-radius: 10px;
+  padding: 0 10px;
+  position: relative;
+  &__icon{
+    margin-right: 10px;
+    margin-top: 8px;
+  }
+  input{
+    height: 20px;
+    mar
+    font-size: 18px;
+    outline-offset: 0;
+    outline: none;
+    border: none;
+    color: #7e4e05;
+  }
+     ::placeholder {
+      color: #CA9B55;
+      opacity: 1; 
+    }
+
+}
