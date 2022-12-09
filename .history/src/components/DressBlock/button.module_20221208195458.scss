@@ -1,0 +1,23 @@
+@import '../../../src/scss/variables';
+
+.buttonContent {
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 22px;
+    padding: 10px 20px;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    line-height: 23px;
+    padding: 12px 25px;
+    border-color: #fff;
+    .plus {
+      margin-bottom: 1px;
+    }
+    .heartContent {
+      margin-right: 15px;
+    }
+ 
+}

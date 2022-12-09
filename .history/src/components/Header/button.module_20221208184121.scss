@@ -1,0 +1,28 @@
+@import '../../../src/scss/variables';
+
+
+.buttonCart {
+    display: flex;
+    align-items: center;
+    line-height: 23px;
+    padding: 12px 25px;
+    border-radius: 20px;
+    .heart, .cart {
+      margin: 10px;
+      width: 18px;
+    }
+    .buttonDelimiter {
+    width: 1px;
+    height: 25px;
+    background-color: rgba(43, 42, 42, 0.25);
+    margin-left: 14px;
+    margin-right: 14px;
+    }
+      .span {
+      color: #50220f;
+      margin-top: 4px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+}
