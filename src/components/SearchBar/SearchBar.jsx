@@ -1,18 +1,14 @@
 import React, {useState}  from 'react'
-import './_searchBar.scss';
+import styles from'./searchBar.module.scss';
 function SearchBar() {
   return (
-    <div className="search-bar">
+    <div className={styles.searchBar}>
       <img
-        className="search-bar__icon"
+        className={styles.searchIcon}
         alt="search"
         src="images/icons/search.svg"
-        width={12}
-        height={13}
       ></img>
-      <input
-        placeholder="Search..."
-      ></input>
+      <input className="input" placeholder="Search..."></input>
     </div>
   );
 }

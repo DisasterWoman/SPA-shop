@@ -8,12 +8,20 @@ function Categories() {
     setActiveIndex(index)
   }
   return (
-    <div className="categories">
-      <ul>
-        {categories.map((value, index) => (
-          <li key={index} onClick={() => onClickCategory(index)} className={activeIndex === index ? 'active' : '' }>{value}</li>
-        ))}
-      </ul>
+    <div className='categioriesWrap'>
+      <div className="categories">
+        <ul>
+          {categories.map((value, index) => (
+            <li
+              key={index}
+              onClick={() => onClickCategory(index)}
+              className={activeIndex === index ? 'active' : ''}
+            >
+              {value}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

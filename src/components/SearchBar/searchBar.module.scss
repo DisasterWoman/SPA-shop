@@ -1,0 +1,40 @@
+@import '../../../src/scss/variables';
+
+.searchBar {
+  width: 350px;
+  margin-top: 30px;
+  border: 1px solid #50220f;
+  border-radius: 10px;
+  padding: 0 10px;
+  img {
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+    input{
+    outline-offset: 0;
+    outline: none;
+    border: none;
+    color: #7e4e05;
+    font-size: 14px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+   .input {
+    outline-offset: 0;
+    outline: none;
+    border: none;
+  }
+     ::placeholder {
+      color: #CA9B55;
+      opacity: 1; 
+    }
+
+}
+@media (max-width: 700px) {
+    .searchBar {
+      width: 250px;
+    }
+
+}
