@@ -8,17 +8,17 @@ import Cart from './pages/Cart';
 import {Routes, Route } from 'react-router-dom';
 
 function App() {
-
+const [searchValue, setSearhValue] = React.useState('');
 return (
   <div className="wrapper">
-    <Header />
+    <Header searchValue={searchValue} setSearhValue={setSearhValue} />
     <div className="content">
       <div className="container">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart/>} />
-          <Route path="/favorites" element={<Favorites/>} />
-          <Route path="/not-found" element={<NotFound/>} />
+          <Route path="/" element={<Home searchValue={searchValue} />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/not-found" element={<NotFound />} />
         </Routes>
       </div>
     </div>

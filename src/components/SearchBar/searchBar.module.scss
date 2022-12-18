@@ -1,11 +1,14 @@
 @import '../../../src/scss/variables';
 
 .searchBar {
-  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  width: 380px;
   margin-top: 30px;
   border: 1px solid #50220f;
   border-radius: 10px;
   padding: 0 10px;
+  margin-bottom: 20px;
   img {
     width: 12px;
     height: 12px;
@@ -26,15 +29,37 @@
     outline: none;
     border: none;
   }
+   .closeIcon {
+    margin-left: 10px;
+    width: 12px;
+    height: 12px;
+    opacity: 0.3;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+   }
      ::placeholder {
       color: #CA9B55;
       opacity: 1; 
     }
 
 }
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
     .searchBar {
       width: 250px;
+    }
+
+}
+@media (max-width: 800px) {
+    .searchBar {
+      width: 350px;
+    }
+
+}
+@media (max-width: 500px) {
+    .searchBar {
+      width: 270px;
     }
 
 }

@@ -1,13 +1,12 @@
 import React from 'react';
-import { Button, ButtonAdd } from './ButtonAdd';
+import { ButtonAdd } from './ButtonAdd';
 import styles from './dressBlock.module.scss'
-function DressBlock({title, sizes, colors, imageUrl}) {
+function DressBlock({title, sizes, colors,price,imageUrl}) {
   const [pickSize, setPickSize] = React.useState(0);
   
   const onClickSize = (index) => {
     setPickSize(index)
   }
-  console.log(imageUrl.image)
   return (
     <div className={styles.dressWrap}>
       <div className={styles.dressBlock}>
@@ -27,7 +26,7 @@ function DressBlock({title, sizes, colors, imageUrl}) {
           </ul>
         </div>
         <div className={styles.dressBottom}>
-          <div className={styles.dressPrice}>125 $</div>
+          <div className={styles.dressPrice}>{price} $</div>
           <ButtonAdd/>
         </div>
       </div>

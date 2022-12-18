@@ -7,13 +7,13 @@
   .container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .headerLogo {
     display: flex;
     .mainLogo {
-      margin-left: 25px;
+     margin-left: 25px;
     }
   }
 }
@@ -22,13 +22,13 @@
   display: flex;
   justify-content: row;
   align-items: center;
+  margin-right: 5px;
 
   .buttonCart {
     display: flex;
     align-items: center;
 
     .heart {
-      margin-right: 40px;
       width: 18px;
       height: 18px;
     }
@@ -52,54 +52,27 @@
   }
 }
 
+
 @media (max-width: 1000px) {
-    
   .mainLogo {
-    width: 240px;
+    width: 250px;
   }
+}
+@media(max-width: 800px) {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+    .mainLogo {
+     margin-left:0px;
+    }
 }
 
 @media (max-width: 600px) {
   .mainLogo {
-    width: 160px;
+    width: 190px;
   }
-  .cart {
-    width: 14px;
-    height: 14px;
-  }
-  .heart {
-      margin-right: 20px;
-      width: 14px;
-      height: 14px;
-    }
-    .buttonDelimiter {
-     margin-left: 10px;
-      margin-right: 10px;
-    }
-    .price {
-      font-size: 10px;
-    }
-}
-
-@media (max-width: 400px) {
-    
-  .mainLogo {
-    width: 120px;
-  }
-    .cart {
-    width: 10px;
-    height: 10px;
-  }
-  .heart {
-      margin-right: 20px;
-      width: 10px;
-      height: 10px;
-    }
-    .buttonDelimiter {
-     margin-left: 10px;
-      margin-right: 10px;
-    }
-    .price {
-      font-size: 10px;
-    }
 }

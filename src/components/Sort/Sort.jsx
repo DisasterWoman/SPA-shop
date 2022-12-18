@@ -1,14 +1,20 @@
 import React, {useState} from 'react';
 import './_sort.scss';
 
-function Sort() {
-  const [sortActive, setSortActive] = useState(0);
+function Sort({value, onChangeSort}) {
+  console.log(value)
+  
   const [isVisiblePop, setIsVisiblePop] = useState(false);
-  const sortCats = ['orders', 'price', 'rewiews'];
-  const sortName = sortCats[sortActive];
-
+  const list = [
+    {name: 'orders(DESC)', sortProperty: 'rating'},
+    {name: 'orders(ASC)', sortProperty: '-rating'},
+    {name: 'price(DESC)', sortProperty: 'price'},
+    {name: 'price(ASC)', sortProperty: '-price'},
+    {name: 'name(DESK)', sortProperty: 'title'},
+    {name: 'name(ASK)', sortProperty: '-title'},
+  ]
   const onSortClick = (index) => {
-    setSortActive(index);
+    onChangeSort(index);
     setIsVisiblePop(false);
   };
 
@@ -29,18 +35,18 @@ function Sort() {
           ></img>
         </div>
         <b>Sort by:</b>
-        <span>{sortName}</span>
+        <span>{value.name}</span>
       </div>
       {isVisiblePop && (
         <div className="sort__popup">
           <ul>
-            {sortCats.map((value, index) => (
+            {list.map((obj, index) => (
               <li
                 key={index}
-                onClick={() => onSortClick(index)}
-                className={sortActive === index ? 'active' : ''}
+                onClick={() => onSortClick(obj)}
+                className={value.sortProperty === obj.sortProperty ? 'active' : ''}
               >
-                {value}
+                {obj.name}
               </li>
             ))}
           </ul>

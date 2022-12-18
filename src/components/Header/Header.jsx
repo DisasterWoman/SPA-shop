@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './header.module.scss';
+import SearchBar from '../SearchBar/SearchBar';
 
-function Header() {
+function Header({ searchValue, setSearhValue }) {
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -12,6 +13,7 @@ function Header() {
             <div></div>
           </div>
         </Link>
+        <SearchBar searchValue={searchValue} setSearhValue={setSearhValue} />
         <div className={styles.cartWrap}>
           <Link to="/cart" className={styles.buttonCart}>
             <span className={styles.price}>520 ₽</span>
@@ -20,11 +22,7 @@ function Header() {
             <div className={styles.buttonDelimiter}></div>
           </Link>
           <Link to="/favorites" className={styles.buttonCart}>
-            <img
-              className={styles.heart}
-              alt="heart"
-              src="/images/icons/heart-empty.svg"
-            ></img>
+            <img className={styles.heart} alt="heart" src="/images/icons/heart-empty.svg"></img>
           </Link>
         </div>
       </div>

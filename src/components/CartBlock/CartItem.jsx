@@ -13,37 +13,37 @@ const CartItem = () => {
         <div className={styles.cartWrap}>
           <div className={styles.cartItems}>
             <div className={styles.imageBox}>
-              <div className={styles.box}>
-                <img
-                  className={styles.cartImg}
-                  src="/images/dresses/dress11.jpg"
-                  width={60}
-                  alt=""
-                />
+              <img className={styles.cartImg} src="/images/dresses/dress9.jpg" width={60} alt="" />
+            </div>
+            <div className={styles.infoLeft}>
+              <div className={styles.about}>
+                <h1 className={styles.title}>Apple Juice</h1>
+                <p className={styles.size}>Size: X</p>
+                <div className={styles.prices}>
+                  <h4 className={styles.before}>3500 $</h4>
+                  <h5 className={styles.after}>2500 $</h5>
+                </div>
+                <button className={styles.btn}>Buy</button>
               </div>
-            </div>
-            <div className={styles.about}>
-              <h1 className={styles.title}>Apple Juice</h1>
-              <p>Size: X</p>
-              <img src="" alt="" />
-            </div>
-            <div className={styles.counter}></div>
-            <div className={styles.prices}></div>
-          </div>
-          <div className={styles.cartItems}>
-            <div className={styles.imageBox}>
-              <div className={styles.box}>
+              <div className={styles.infoRight}>
                 <img
-                  className={styles.cartImg}
-                  src="/images/dresses/dress9.jpg"
-                  width={60}
-                  alt=""
+                  className={styles.trash}
+                  src="/images/icons/trash-can-icon.svg"
+                  width={14}
+                  alt="trash"
                 />
+                <div className={styles.counterWrap}>
+                  <div className={styles.counter}>
+                    <div className={styles.plus}>
+                      <p>+</p>
+                    </div>
+                    <span>1</span>
+                    <div className={styles.minus}>
+                      <p>-</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className={styles.about}>
-              <h1 className={styles.title}>Apple Juice</h1>
-              <div></div>
             </div>
             <div className={styles.counter}></div>
             <div className={styles.prices}></div>
