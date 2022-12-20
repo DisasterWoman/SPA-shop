@@ -4,12 +4,14 @@ import Categories from '../components/Categories/Categories';
 import Sort from '../components/Sort/Sort';
 import DressBlock from '../components/DressBlock/DressBlock';
 import Skeleton from '../components/Skeletons/SkeletonMain';
+import Pagination from '../components/Pagination/Pagination';
+import { setSelectionRange } from '@testing-library/user-event/dist/utils';
 
 const Home = ({ searchValue }) => {
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [categoryId, setCategoryId] = React.useState(0);
-
+  const [currentPage, setCurrentPage] = React.useState(1)
   const [sortType, setSortType] = React.useState({
     name: 'orders',
     sortProperty: 'rating',
@@ -23,13 +25,13 @@ const Home = ({ searchValue }) => {
     const search = searchValue ? `search=${searchValue}` : '';
     axios
       .get(
-        `https://638caec6eafd555746abf518.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}${search}`,
+        `https://638caec6eafd555746abf518.mockapi.io/items?page=${currentPage}&limit=4${category}&sortBy=${sortBy}&order=${order}${search}`,
       )
       .then((res) => {
         setItems(res.data);
         setIsLoading(false);
       });
-  }, [categoryId, sortType, searchValue]);
+  }, [categoryId, sortType, searchValue, currentPage]);
 
   const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
   const dresses = items
@@ -49,6 +51,7 @@ const Home = ({ searchValue }) => {
       </div>
       <h2 className="content__title">All Dresses</h2>
       <div className="content__items">{isLoading ? skeletons : dresses}</div>
+    <Pagination onChangePage={num => setCurrentPage(num)}/>
     </>
   );
 };
