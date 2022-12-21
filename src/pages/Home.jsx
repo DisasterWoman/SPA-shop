@@ -5,17 +5,24 @@ import Sort from '../components/Sort/Sort';
 import DressBlock from '../components/DressBlock/DressBlock';
 import Skeleton from '../components/Skeletons/SkeletonMain';
 import Pagination from '../components/Pagination/Pagination';
-import { setSelectionRange } from '@testing-library/user-event/dist/utils';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { setCategoryId } from '../redux/slices/filterSlice';
 const Home = ({ searchValue }) => {
+  const categoryId = useSelector((state) => state.filterSlice.categoryId);
+  const dispatch = useDispatch();
+
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [categoryId, setCategoryId] = React.useState(0);
-  const [currentPage, setCurrentPage] = React.useState(1)
+  // const [categoryId, setCategoryId] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState(1);
   const [sortType, setSortType] = React.useState({
     name: 'orders',
     sortProperty: 'rating',
   });
+
+  const onClickCategory = (id) => {
+    dispatch(setCategoryId(id))
+  };
 
   React.useEffect(() => {
     setIsLoading(true);
@@ -46,12 +53,12 @@ const Home = ({ searchValue }) => {
   return (
     <>
       <div className="content__top">
-        <Categories value={categoryId} onClickCategory={(id) => setCategoryId(id)} />
+        <Categories value={categoryId} onClickCategory={onClickCategory} />
         <Sort value={sortType} onChangeSort={(id) => setSortType(id)} />
       </div>
       <h2 className="content__title">All Dresses</h2>
       <div className="content__items">{isLoading ? skeletons : dresses}</div>
-    <Pagination onChangePage={num => setCurrentPage(num)}/>
+      <Pagination onChangePage={(num) => setCurrentPage(num)} />
     </>
   );
 };
