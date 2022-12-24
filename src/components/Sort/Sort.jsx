@@ -1,20 +1,24 @@
 import React, {useState} from 'react';
 import './_sort.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { setSort } from '../../redux/slices/filterSlice';
 
-function Sort({value, onChangeSort}) {
-  console.log(value)
-  
-  const [isVisiblePop, setIsVisiblePop] = useState(false);
   const list = [
-    {name: 'orders(DESC)', sortProperty: 'rating'},
-    {name: 'orders(ASC)', sortProperty: '-rating'},
-    {name: 'price(DESC)', sortProperty: 'price'},
-    {name: 'price(ASC)', sortProperty: '-price'},
-    {name: 'name(DESK)', sortProperty: 'title'},
-    {name: 'name(ASK)', sortProperty: '-title'},
-  ]
-  const onSortClick = (index) => {
-    onChangeSort(index);
+    { name: 'orders(DESC)', sortProperty: 'rating' },
+    { name: 'orders(ASC)', sortProperty: '-rating' },
+    { name: 'price(DESC)', sortProperty: 'price' },
+    { name: 'price(ASC)', sortProperty: '-price' },
+    { name: 'name(DESK)', sortProperty: 'title' },
+    { name: 'name(ASK)', sortProperty: '-title' },
+  ];
+
+function Sort() {
+  const dispatch = useDispatch();
+  const sort = useSelector(state => state.filterSlice.sort);
+
+  const [isVisiblePop, setIsVisiblePop] = useState(false);
+  const onSortClick = (obj) => {
+    dispatch(setSort(obj))
     setIsVisiblePop(false);
   };
 
@@ -35,7 +39,7 @@ function Sort({value, onChangeSort}) {
           ></img>
         </div>
         <b>Sort by:</b>
-        <span>{value.name}</span>
+        <span>{sort.name}</span>
       </div>
       {isVisiblePop && (
         <div className="sort__popup">
@@ -44,7 +48,7 @@ function Sort({value, onChangeSort}) {
               <li
                 key={index}
                 onClick={() => onSortClick(obj)}
-                className={value.sortProperty === obj.sortProperty ? 'active' : ''}
+                className={sort.sortProperty === obj.sortProperty ? 'active' : ''}
               >
                 {obj.name}
               </li>

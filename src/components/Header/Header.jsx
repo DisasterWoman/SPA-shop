@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './header.module.scss';
 import SearchBar from '../SearchBar/SearchBar';
 
-function Header({ searchValue, setSearhValue }) {
+function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -13,7 +13,7 @@ function Header({ searchValue, setSearhValue }) {
             <div></div>
           </div>
         </Link>
-        <SearchBar searchValue={searchValue} setSearhValue={setSearhValue} />
+        <SearchBar/>
         <div className={styles.cartWrap}>
           <Link to="/cart" className={styles.buttonCart}>
             <span className={styles.price}>520 ₽</span>
