@@ -6,13 +6,17 @@ import DressBlock from '../components/DressBlock/DressBlock';
 import Skeleton from '../components/Skeletons/SkeletonMain';
 import Pagination from '../components/Pagination/Pagination';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCategoryId, setSort, setCurrentPage } from '../redux/slices/filterSlice';
+import { setCategoryId, setSort, setCurrentPage, setFilters } from '../redux/slices/filterSlice';
 import { GlobalContext } from '../App';
+import qs from 'qs';
+import { useNavigate } from 'react-router-dom';
+import { list } from '../components/Sort/Sort'
 
 const Home = () => {
-  const { categoryId, sort, currentPage } = useSelector((state) => state.filterSlice);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const { categoryId, sort, currentPage } = useSelector((state) => state.filterSlice);
   const { searchValue } = React.useContext(GlobalContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -26,8 +30,21 @@ const Home = () => {
   };
 
   React.useEffect(() => {
-    setIsLoading(true);
-    
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      const sort = list.find(obj => obj.sortProperty === params.sortProperty)
+      
+      dispatch(
+        setFilters({
+          ...params,
+          sort,
+        }),
+      );
+    }
+  }, []);
+
+  React.useEffect(() => {
+    setIsLoading(true); 
     const sortBy = sort.sortProperty.replace('-', '');
     const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
     const category = categoryId > 0 ? `category=${categoryId}` : '';
@@ -41,6 +58,15 @@ const Home = () => {
         setIsLoading(false);
       });
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
+
+  React.useEffect(() => {
+    const queryString = qs.stringify({
+      sortProperty: sort.sortProperty,
+      categoryId,
+      currentPage,
+    });
+    navigate(`?${queryString}`)
+  }, [categoryId, sort.sortProperty, currentPage]);
 
   const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
   const dresses = items

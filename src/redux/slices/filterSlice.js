@@ -22,9 +22,13 @@ const fileterSlice = createSlice({
     setCurrentPage(state, action) {
       state.currentPage = action.payload;
     },
+    setFilters(state, action) {
+      state.currentPage = Number(action.payload.currentPage);
+      state.categoryId = Number(action.payload.categoryId);
+    }
   },
 });
 
-export const { setCategoryId, setSort, setCurrentPage } = fileterSlice.actions;
+export const { setCategoryId, setSort, setCurrentPage, setFilters } = fileterSlice.actions;
 
 export default fileterSlice.reducer;
