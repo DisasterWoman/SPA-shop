@@ -9,7 +9,6 @@ function SearchBar() {
   const inputRef = React.useRef();
   const [value, setValue] = React.useState('');
 
-
   const onClickClear = () => {
     setSearchValue('');
     setValue('');

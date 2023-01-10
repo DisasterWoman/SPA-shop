@@ -15,19 +15,27 @@ import { setSort } from '../../redux/slices/filterSlice';
 function Sort() {
   const dispatch = useDispatch();
   const sort = useSelector(state => state.filterSlice.sort);
-
+  const sortRef =  React.useRef()
+  console.log(sortRef)
   const [isVisiblePop, setIsVisiblePop] = useState(false);
   const onSortClick = (obj) => {
     dispatch(setSort(obj))
     setIsVisiblePop(false);
   };
+  React.useEffect(() => {
+    // const handleClickOutside = (event) => {
+    //   if(event.path.includes())
+    // }
+    return () => { 
+    };
+  }, [])
 
   const onClickPop = () => {
     setIsVisiblePop(!isVisiblePop);
   };
 
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label" onClick={() => onClickPop()}>
         <div className="sort__triangleWrap">
           <img
