@@ -13,23 +13,28 @@ import { setSort } from '../../redux/slices/filterSlice';
   ];
 
 function Sort() {
+
   const dispatch = useDispatch();
   const sort = useSelector(state => state.filterSlice.sort);
-  const sortRef =  React.useRef()
-  console.log(sortRef)
+  const sortRef =  React.useRef();
+  
   const [isVisiblePop, setIsVisiblePop] = useState(false);
   const onSortClick = (obj) => {
     dispatch(setSort(obj))
     setIsVisiblePop(false);
-  };
+  }; 
+
   React.useEffect(() => {
-    // const handleClickOutside = (event) => {
-    //   if(event.path.includes())
-    // }
-    //
-    return () => { 
+    let handler = (event) => {
+      if (!sortRef.current.contains(event.target)) {
+        setIsVisiblePop(false);
+      }
     };
-  }, [])
+    document.addEventListener("mousedown", handler);
+    return () => { 
+      document.removeEventListener("mousedown", handler);
+    };
+  })
 
   const onClickPop = () => {
     setIsVisiblePop(!isVisiblePop);

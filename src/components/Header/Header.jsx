@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './header.module.scss';
 import SearchBar from '../SearchBar/SearchBar';
+import { useSelector } from 'react-redux'; 
 
 function Header() {
+  const {items, totalPrice} = useSelector((state) => state.cart);
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -16,7 +18,7 @@ function Header() {
         <SearchBar/>
         <div className={styles.cartWrap}>
           <Link to="/cart" className={styles.buttonCart}>
-            <span className={styles.price}>520 ₽</span>
+            <span className={styles.price}>{totalPrice}</span>
             <div className={styles.buttonDelimiter}></div>
             <img className={styles.cart} alt="cart" src="/images/icons/cart-icon.svg"></img>
             <div className={styles.buttonDelimiter}></div>

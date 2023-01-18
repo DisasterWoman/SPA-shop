@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import axios from 'axios';
 import Categories from '../components/Categories/Categories';
@@ -33,26 +34,25 @@ const Home = () => {
     dispatch(setCurrentPage(num));
   };
   const fetchDresses = () => {
-   setIsLoading(true);
-   const sortBy = sort.sortProperty.replace('-', '');
-   const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
-   const category = categoryId > 0 ? `category=${categoryId}` : '';
-   const search = searchValue ? `search=${searchValue}` : '';
-   axios
-     .get(
-       `https://638caec6eafd555746abf518.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,
-     )
-     .then((res) => {
-       setItems(res.data);
-       setIsLoading(false);
-     });
-  }
+    setIsLoading(true);
+    const sortBy = sort.sortProperty.replace('-', '');
+    const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
+    const category = categoryId > 0 ? `category=${categoryId}` : '';
+    const search = searchValue ? `search=${searchValue}` : '';
+    axios
+      .get(
+        `https://638caec6eafd555746abf518.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,
+      )
+      .then((res) => {
+        setItems(res.data);
+        setIsLoading(false);
+      });
+  };
 
   React.useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
-      const sort = list.find(obj => obj.sortProperty === params.sortProperty)
-      
+      const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
       dispatch(
         setFilters({
           ...params,
@@ -64,7 +64,6 @@ const Home = () => {
   }, []);
 
   React.useEffect(() => {
-    window.scrollTo(0, 0); 
     if (!isSearch.current) {
       fetchDresses();
     }
@@ -72,7 +71,7 @@ const Home = () => {
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
   React.useEffect(() => {
-    if(isMounted.current) {
+    if (isMounted.current) {
       const queryString = qs.stringify({
         sortProperty: sort.sortProperty,
         categoryId,
@@ -80,10 +79,11 @@ const Home = () => {
       });
       navigate(`?${queryString}`);
     }
-   isMounted.current = true; 
+    isMounted.current = true;
   }, [categoryId, sort.sortProperty, currentPage]);
 
   const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index} />);
+
   const dresses = items
     .filter((obj) => {
       if (obj.title.toLowerCase().includes(searchValue)) {
