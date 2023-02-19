@@ -15,7 +15,6 @@ import { list } from '../components/Sort/Sort';
 
 const Home = () => {
   const { searchValue } = React.useContext(GlobalContext);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -105,4 +104,4 @@ const Home = () => {
     </>
   );
 };
-export default Home;
+export default Home; 
