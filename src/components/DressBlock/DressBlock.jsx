@@ -5,7 +5,7 @@ import { addItem } from "../../redux/slices/cartSlice";
 
 function DressBlock({ id, title, sizes, price, imageUrl }) {
   const [addToCart, setAddToCart] = React.useState(false);
-  const [addToFav, setAddToFav] = React.useState(false);
+  const [addToFav, setAddToFav] = React.useState(true);
   const dispatch = useDispatch();
   const [pickSize, setPickSize] = React.useState(0);
 
